@@ -1,6 +1,16 @@
 spring:
   application:
     name: WIMP_ApiGateway
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: service_discovery_route
+#          uri: http://oci-hyeoni1995.duckdns.org:8761  # ???? ?? ???
+#          predicates:
+#            - Path=/servicediscovery/**  # ?? ?? ??
+#          filters:
+#            - SetStatus=302  # HTTP ?? ??? 302? ?? (?????)
+#            - RedirectTo=301,http://oci-hyeoni1995.duckdns.org:8761  # ?? ????? ??
 
 server:
-    port: 18080
+  port: 18080  # ??????? ??? ??
