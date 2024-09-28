@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: WIMP_ApiGateway
+
+server:
+    port: 18080
