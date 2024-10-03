@@ -20,7 +20,7 @@ public class FilterConfig {
 //                                .addResponseHeader("second-response", "second-response-header"))
 //                        .uri("http://localhost:8082"))
                 // redirect to
-                .route(r -> r.path("/servicediscovery")
+                .route(r -> r.path("/servicediscovery","/eureka", "/eureka/**")
                         .filters(f -> f
                                 .setStatus(HttpStatus.FOUND)  // 302 상태 코드로 설정
                                 .redirect(302, "http://oci-hyeoni1995.duckdns.org:8761"))  // 리다이렉트할 URL
