@@ -7,6 +7,21 @@ plugins {
 group = 'com.wimp'
 version = '0.0.1-SNAPSHOT'
 
+// Disable plain JAR creation
+jar {
+    enabled = false
+}
+
+// Boot JAR 설정
+bootJar {
+    // Get the JAR file name and version from parameters or use defaults
+    def jarFileName = project.hasProperty('applicationName') ? project.applicationName : project.name
+    def jarVersion = project.hasProperty('applicationVersion') ? project.applicationVersion : project.version
+
+    archiveBaseName.set(jarFileName)  // Set the base name of the JAR
+    archiveVersion.set(jarVersion)      // Set the version of the JAR
+}
+
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
