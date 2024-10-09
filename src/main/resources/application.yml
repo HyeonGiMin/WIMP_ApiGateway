@@ -25,6 +25,9 @@ eureka:
     service-url:
       defaultZone: http://localhost:${eureka.client.eureka-server-port}/eureka
 
+logging:
+  config: classpath:logConfig.xml
+
 management:
   endpoints:
     web:
