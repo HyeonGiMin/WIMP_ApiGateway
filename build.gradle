@@ -42,6 +42,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator' // Actuator (선택 사항)
 
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '4.1.3'
+
+    //Keycloak
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
 }
 
 dependencyManagement {

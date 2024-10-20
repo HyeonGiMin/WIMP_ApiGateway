@@ -10,6 +10,13 @@ spring:
             - Path=/api/test/**
           filters:
             - RewritePath=/api/test/(?<remaining>.*), /api/${API_VERSION:default}/test/${remaining}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://192.168.0.174:18080/realms/springboot-test
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
 
 server:
   port: 8080
@@ -33,3 +40,4 @@ management:
     web:
       exposure:
         include: '*'  # Expose all actuator endpoints
+
