@@ -1,4 +1,10 @@
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://192.168.0.174:18080/realms/WIMP
+          jwk-set-uri: http://192.168.0.174:18080/realms/WIMP/protocol/openid-connect/certs
   main:
     allow-bean-definition-overriding: true
   application:
@@ -12,12 +18,6 @@ spring:
             - Path=/api/test/**
           filters:
             - RewritePath=/api/test/(?<remaining>.*), /api/${API_VERSION:default}/test/${remaining}
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://192.168.0.174:18080/realms/springboot-test
-          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
 
 
 server:
