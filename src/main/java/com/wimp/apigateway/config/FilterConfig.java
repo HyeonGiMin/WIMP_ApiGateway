@@ -15,10 +15,11 @@ public class FilterConfig {
 //                .route(r -> r.path("/first-service/**")
 //                        .uri("http://localhost:8081"))
                 // second-service
-//                .route(r -> r.path("/second-service/**")
-//                        .filters(f -> f.addResponseHeader("second-request", "second-request-header")
-//                                .addResponseHeader("second-response", "second-response-header"))
-//                        .uri("http://localhost:8082"))
+                .route(r -> r.path("/second-service/**")
+                        .filters(f -> f
+                                .rewritePath("/second-service/api/(?<remaining>.*)", "/api/" + getApiVersion() + "/${remaining}") // RewritePath filter with API_VERSION
+                        )
+                        .uri("http://localhost:8082"))
                 // redirect to
                 .route(r -> r.path("/servicediscovery","/eureka", "/eureka/**")
                         .filters(f -> f
@@ -26,5 +27,10 @@ public class FilterConfig {
                                 .redirect(302, "http://oci-hyeoni1995.duckdns.org:8761"))  // 리다이렉트할 URL
                         .uri("http://oci-hyeoni1995.duckdns.org:8761"))  // uri는 필요 없음
                 .build();
+    }
+
+    // Helper method to resolve API_VERSION from environment or use 'default'
+    private String getApiVersion() {
+        return System.getenv().getOrDefault("API_VERSION", "v1");
     }
 }

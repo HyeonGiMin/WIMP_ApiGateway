@@ -3,21 +3,19 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://192.168.0.174:18080/realms/WIMP
-          jwk-set-uri: http://192.168.0.174:18080/realms/WIMP/protocol/openid-connect/certs
-  main:
-    allow-bean-definition-overriding: true
+          issuer-uri: http://hyeoni1995.duckdns.org:28080/realms/WIMP
+          jwk-set-uri: http://hyeoni1995.duckdns.org:28080/realms/WIMP/protocol/openid-connect/certs
   application:
     name: WIMP_ApiGateway
-  cloud:
-    gateway:
-      routes:
-        - id: dummy_service
-          uri: lb://DEMO
-          predicates:
-            - Path=/api/test/**
-          filters:
-            - RewritePath=/api/test/(?<remaining>.*), /api/${API_VERSION:default}/test/${remaining}
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: dummy_service
+#          uri: lb://DEMO
+#          predicates:
+#            - Path=/api/test/**
+#          filters:
+#            - RewritePath=/api/test/(?<remaining>.*), /api/${API_VERSION:default}/test/${remaining}
 
 
 server:
@@ -32,10 +30,12 @@ eureka:
     fetch-registry: true
     disable-delta: true
     service-url:
-      defaultZone: http://localhost:${eureka.client.eureka-server-port}/eureka
+      defaultZone: http://oci-hyeoni1995.duckdns.org:${eureka.client.eureka-server-port}/eureka
 
 logging:
   config: classpath:logConfig.xml
+  level:
+    org.springframework.security: DEBUG
 
 management:
   endpoints:
