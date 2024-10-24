@@ -11,13 +11,9 @@ public class FilterConfig {
     @Bean
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
-                // first-service
-//                .route(r -> r.path("/first-service/**")
-//                        .uri("http://localhost:8081"))
-                // second-service
-                .route(r -> r.path("/second-service/**")
+                .route(r -> r.path("/demo/**")
                         .filters(f -> f
-                                .rewritePath("/second-service/api/(?<remaining>.*)", "/api/" + getApiVersion() + "/${remaining}") // RewritePath filter with API_VERSION
+                                .rewritePath("/demo/api/(?<remaining>.*)", "/api/" + getApiVersion() + "/${remaining}") // RewritePath filter with API_VERSION
                         )
                         .uri("http://localhost:8082"))
                 // redirect to

@@ -7,7 +7,7 @@
     <property name="LOG_PATH" value="./log"/>
 
     <!-- 로그 파일 이름 -->
-    <property name="LOG_FILE_NAME" value="sampleLog"/>
+    <property name="LOG_FILE_NAME" value="apiGateway"/>
 
     <!-- 로그 출력 패턴 -->
     <property name="LOG_PATTERN" value="%-5level %d{yy-MM-dd HH:mm:ss}[%thread] [%logger{0}:%line] - %msg%n"/>
