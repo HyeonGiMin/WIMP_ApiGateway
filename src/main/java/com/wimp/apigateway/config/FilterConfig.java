@@ -11,6 +11,11 @@ public class FilterConfig {
     @Bean
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
+                .route(r -> r.path("/redmine/**")
+                        .filters(f -> f
+                                .rewritePath("/redmine/api/(?<remaining>.*)", "/api/" + getApiVersion() + "/redmine/${remaining}") // RewritePath filter with API_VERSION
+                        )
+                        .uri("http://localhost:8083"))
                 .route(r -> r.path("/demo/**")
                         .filters(f -> f
                                 .rewritePath("/demo/api/(?<remaining>.*)", "/api/" + getApiVersion() + "/${remaining}") // RewritePath filter with API_VERSION
