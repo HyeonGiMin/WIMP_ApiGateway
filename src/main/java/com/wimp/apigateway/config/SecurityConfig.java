@@ -21,7 +21,7 @@ public class SecurityConfig {
                 .authorizeExchange(exchanges -> exchanges
                         .pathMatchers(HttpMethod.GET,"/servicediscovery","/eureka","/eureka/**").permitAll() // Public routes
                         .pathMatchers(HttpMethod.GET,"/actuator/**").permitAll()
-                        .pathMatchers(HttpMethod.GET,"/**/**/**/actuator/**").permitAll()
+                        .pathMatchers(HttpMethod.GET,"/api/redmine/actuator/**").permitAll()
                         .anyExchange().authenticated() // All other routes need authentication
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
