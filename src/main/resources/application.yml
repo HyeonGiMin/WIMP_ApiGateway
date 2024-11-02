@@ -24,7 +24,7 @@ server:
     enabled: true
     key-store: classpath:keystore.jks # Keystore 파일의 경로
     key-store-password: wimp1234 # Keystore 비밀번호
-    key-alias: https # 인증서 별칭
+    key-alias: wimp_ssl  # 인증서 별칭
 
 eureka:
   instance:
