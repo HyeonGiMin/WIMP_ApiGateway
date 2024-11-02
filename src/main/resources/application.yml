@@ -3,8 +3,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://hyeoni1995.duckdns.org:28080/realms/WIMP
-          jwk-set-uri: http://hyeoni1995.duckdns.org:28080/realms/WIMP/protocol/openid-connect/certs
+          issuer-uri: https://hyeoni1995.duckdns.org:28080/realms/WIMP
+          jwk-set-uri: https://hyeoni1995.duckdns.org:28080/realms/WIMP/protocol/openid-connect/certs
   application:
     name: WIMP_ApiGateway
 #  cloud:
